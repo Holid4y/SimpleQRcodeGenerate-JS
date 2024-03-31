@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="QR-Generate">
+    <meta name="apple-mobile-web-app-title" content="QR-Generate">
+    <meta property="og:title" content="QR-Generate">
+    <meta name="description" content="Генерация QR-кодов">
+    <title>QR-Generate</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/qrcode.js"></script>
+</head>
+<body>   
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="tiktok" viewBox="0 0 16 16">
+      <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+    </symbol>
+    <symbol id="telegram" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+    </symbol>
+    <symbol id="vk" viewBox="0 0 48 48">
+      <path d="M0 23.04C0 12.1788 0 6.74826 3.37413 3.37413C6.74826 0 12.1788 0 23.04 0H24.96C35.8212 0 41.2517 0 44.6259 3.37413C48 6.74826 48 12.1788 48 23.04V24.96C48 35.8212 48 41.2517 44.6259 44.6259C41.2517 48 35.8212 48 24.96 48H23.04C12.1788 48 6.74826 48 3.37413 44.6259C0 41.2517 0 35.8212 0 24.96V23.04Z" fill-rule="evenodd" clip-rule="evenodd"/>
+      <path d="M25.54 34.5801C14.6 34.5801 8.3601 27.0801 8.1001 14.6001H13.5801C13.7601 23.7601 17.8 27.6401 21 28.4401V14.6001H26.1602V22.5001C29.3202 22.1601 32.6398 18.5601 33.7598 14.6001H38.9199C38.0599 19.4801 34.4599 23.0801 31.8999 24.5601C34.4599 25.7601 38.5601 28.9001 40.1201 34.5801H34.4399C33.2199 30.7801 30.1802 27.8401 26.1602 27.4401V34.5801H25.54Z" fill="#1c1b22"/>
+    </symbol>
+  </svg>
+
+  <nav class="navbar fixed-top px-4 blur" style="height: 60px;">
+    <h3 class="col-6 mb-0 text-body-secondary">QR-Generate</h3>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="https://github.com/Holid4y/SimpleQRcodeGenerate-JS.git" class="nav-link active" aria-current="page" target="_blank">Перейти на Git</a></li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+    <main class="container">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-6">
+          <form>
+            <div class="row mb-3">
+              <label for="text_qrcode" class="col-sm-2 col-form-label">Текст для генерации</label>
+              <div class="col-sm-10"><input type="text" class="form-control" id="text_qrcode"></div>
+            </div>
+            <div class="row mb-3">
+              <label for="customRange" class="col-sm-2 col-form-label">Отступ</label>
+              <div class="col-sm-10"><input type="range" class="form-range" id="customRange"></div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6 row mb-3">
+                <label for="color_line" class="col-sm-5 col-form-label">Цвет линий</label>
+                <div class="col-sm-7"><input type="color" class="form-control form-control-color w-100" id="color_line" value="#000000" title="Choose your color"></div>
+              </div>
+              <div class="col-6 row mb-3">
+                <label for="color_bg" class="col-sm-5 col-form-label">Цвет фона</label>
+                <div class="col-sm-7"><input type="color" class="form-control form-control-color w-100" id="color_bg" value="#ffffff" title="Choose your color"></div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3 w-100">Генерировать / Generate</button>
+          </form>
+        </div>
+        <div class="col-12 col-md-12 col-lg-6">
+          <div class="card">
+            <div id="qrcode" style="display: none;" class="card-img-top"></div>
+            <img id="imagePlaceholder" src="media/img/licensed-image.jpg" class="card-img-top">
+            <div class="card-body"><a href="#" class="btn btn-primary w-100" id="downloadLink">Скачать / Save</a></div>
+          </div>
+        </div>      
+    </main>
+  </div>
+
+  <div class="d-none d-md-block">
+    <footer class="navbar fixed-bottom px-4" style="height: 60px;">
+      <ul class="nav align-items-center col-6">
+        <li class="nav-item"><a href="https://t.me/H0LID4Y" target="_blank" class="nav-link px-2 text-body-secondary"><svg class="bi me-2" width="25" height="25"><use xlink:href="#telegram"></use></svg></a></li>
+        <li class="nav-item"><a href="#" target="_blank" class="nav-link px-2 text-body-secondary"><svg class="bi me-2" width="25" height="25"><use xlink:href="#tiktok"></use></svg></a></li>
+        <li class="nav-item"><a href="https://vk.com/command_0110" target="_blank" class="nav-link px-2 text-body-secondary"><svg class="bi me-2" width="25" height="25"><use xlink:href="#vk"></use></svg></a></li>
+      </ul>
+      <p class="col-6 text-end mb-0">© 2024 QR-Generate</p>
+    </footer>
+  </div>   
+</body>
+</html>
