@@ -29,20 +29,28 @@
     </symbol>
   </svg>
 
-  <nav class="navbar fixed-top px-4 blur" style="height: 60px;">
-    <h3 class="col-6 mb-0 text-body-secondary">QR-Generate</h3>
-    <ul class="nav nav-pills" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Генерировать</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Сканировать</button>
-      </li>
-      <li class="nav-item"><a href="https://github.com/Holid4y/SimpleQRcodeGenerate-JS.git" class="nav-link" aria-current="page" target="_blank">Перейти на Git</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg blur">
+      <div class="container-fluid">
+          <span class="navbar-brand">QR-Generate</span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <ul class="nav nav-pills ms-auto" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Генерировать</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Сканировать</button>
+                  </li>
+                  <li class="nav-item"><a href="https://github.com/Holid4y/SimpleQRcodeGenerate-JS.git" class="nav-link" aria-current="page" target="_blank">Перейти на Git</a></li>
+              </ul>
+          </div>
+      </div>
   </nav>
 
-  <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+
+  <div class="container-fluid d-flex align-items-center min-vh-100">
     <main class="container">
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
