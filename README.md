@@ -1,4 +1,4 @@
-# Простой Генератор QR-кодов
+# Простой Генератор\Сканер QR-кодов
 
 ![QR-код Generate](https://holid4y.github.io/SimpleQRcodeGenerate-JS/media/img/1.png)
 ![QR-код Scan](https://holid4y.github.io/SimpleQRcodeGenerate-JS/media/img/2.png)
