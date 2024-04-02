@@ -12,6 +12,7 @@
     <title>QR-Generate</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/qrcode.js"></script>
 </head>
 <body>   
@@ -30,44 +31,76 @@
 
   <nav class="navbar fixed-top px-4 blur" style="height: 60px;">
     <h3 class="col-6 mb-0 text-body-secondary">QR-Generate</h3>
-    <ul class="nav nav-pills">
-      <li class="nav-item"><a href="https://github.com/Holid4y/SimpleQRcodeGenerate-JS.git" class="nav-link active" aria-current="page" target="_blank">Перейти на Git</a></li>
+    <ul class="nav nav-pills" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Генерировать</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Сканировать</button>
+      </li>
+      <li class="nav-item"><a href="https://github.com/Holid4y/SimpleQRcodeGenerate-JS.git" class="nav-link" aria-current="page" target="_blank">Перейти на Git</a></li>
     </ul>
   </nav>
 
   <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
     <main class="container">
-      <div class="row">
-        <div class="col-12 col-md-12 col-lg-6">
-          <form>
-            <div class="row mb-3">
-              <label for="text_qrcode" class="col-sm-2 col-form-label">Текст для генерации</label>
-              <div class="col-sm-10"><input type="text" class="form-control" id="text_qrcode"></div>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-6">
+              <form>
+                <div class="row mb-3">
+                  <label for="text_qrcode" class="col-sm-2 col-form-label">Текст для генерации</label>
+                  <div class="col-sm-10"><input type="text" class="form-control" id="text_qrcode"></div>
+                </div>
+                <div class="row mb-3">
+                  <label for="customRange" class="col-sm-2 col-form-label">Отступ</label>
+                  <div class="col-sm-10"><input type="range" class="form-range" id="customRange"></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6 row mb-3">
+                    <label for="color_line" class="col-sm-5 col-form-label">Цвет линий</label>
+                    <div class="col-sm-7"><input type="color" class="form-control form-control-color w-100" id="color_line" value="#000000" title="Choose your color"></div>
+                  </div>
+                  <div class="col-6 row mb-3">
+                    <label for="color_bg" class="col-sm-5 col-form-label">Цвет фона</label>
+                    <div class="col-sm-7"><input type="color" class="form-control form-control-color w-100" id="color_bg" value="#ffffff" title="Choose your color"></div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3 w-100">Генерировать / Generate</button>
+              </form>
             </div>
-            <div class="row mb-3">
-              <label for="customRange" class="col-sm-2 col-form-label">Отступ</label>
-              <div class="col-sm-10"><input type="range" class="form-range" id="customRange"></div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-6 row mb-3">
-                <label for="color_line" class="col-sm-5 col-form-label">Цвет линий</label>
-                <div class="col-sm-7"><input type="color" class="form-control form-control-color w-100" id="color_line" value="#000000" title="Choose your color"></div>
+            <div class="col-12 col-md-12 col-lg-6">
+              <div class="card">
+                <div id="qrcode" style="display: none;" class="card-img-top"></div>
+                <img id="imagePlaceholder" src="media/img/licensed-image.jpg" class="card-img-top">
+                <div class="card-body"><a href="#" class="btn btn-primary w-100" id="downloadLink">Скачать / Save</a></div>
               </div>
-              <div class="col-6 row mb-3">
-                <label for="color_bg" class="col-sm-5 col-form-label">Цвет фона</label>
-                <div class="col-sm-7"><input type="color" class="form-control form-control-color w-100" id="color_bg" value="#ffffff" title="Choose your color"></div>
-              </div>
             </div>
-            <button type="submit" class="btn btn-primary mb-3 w-100">Генерировать / Generate</button>
-          </form>
-        </div>
-        <div class="col-12 col-md-12 col-lg-6">
-          <div class="card">
-            <div id="qrcode" style="display: none;" class="card-img-top"></div>
-            <img id="imagePlaceholder" src="media/img/licensed-image.jpg" class="card-img-top">
-            <div class="card-body"><a href="#" class="btn btn-primary w-100" id="downloadLink">Скачать / Save</a></div>
           </div>
-        </div>      
+        </div>
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <form>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Выбрать QR-code</label>
+                  <input class="form-control" type="file" id="formFile">
+                </div>                
+                <button type="submit" class="btn btn-primary mb-5 w-100">Сканировать / Scan</button>
+            </form>
+            <div class="card" aria-hidden="true">
+              <div class="card-body">
+                <p class="card-text placeholder-glow">
+                  <span class="placeholder col-7"></span>
+                  <span class="placeholder col-4"></span>
+                  <span class="placeholder col-4"></span>
+                  <span class="placeholder col-6"></span>
+                  <span class="placeholder col-8"></span>
+                </p>
+                <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true">Перейти</a>
+              </div>
+            </div>
+        </div>
+      </div>
     </main>
   </div>
 
@@ -80,6 +113,8 @@
       </ul>
       <p class="col-6 text-end mb-0">© 2024 QR-Generate</p>
     </footer>
-  </div>   
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+
 </body>
 </html>
