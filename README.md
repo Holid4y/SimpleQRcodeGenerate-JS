@@ -1,6 +1,7 @@
 # Простой Генератор QR-кодов
 
-![QR-код Screenshot](https://holid4y.github.io/SimpleQRcodeGenerate-JS/media/img/1.png)
+![QR-код Generate](https://holid4y.github.io/SimpleQRcodeGenerate-JS/media/img/1.png)
+![QR-код Scan](https://holid4y.github.io/SimpleQRcodeGenerate-JS/media/img/2.png)
 ## Описание
 
 Этот проект представляет собой простой генератор QR-кодов, разработанный для удобного создания QR-кодов из текстовой информации. QR-коды широко используются для быстрого передачи данных, таких как веб-ссылки, контактные данные, текстовые сообщения и многое другое.
